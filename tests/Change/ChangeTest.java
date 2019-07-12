@@ -16,4 +16,13 @@ public class ChangeTest {
             Assert.assertEquals(cents, theirWallet.getTotalCoinValue());
         }
     }
+
+    @Test
+    public void WalletAddsOnePenny(){
+        Wallet theirWallet = CalculateChange.getTheChange(1);
+        Wallet myWallet = new Wallet();
+        myWallet.addPenny();
+        Assert.assertEquals(myWallet, theirWallet);
+
+    }
 }

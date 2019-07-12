@@ -40,4 +40,30 @@ public class Wallet {
               .sum();
 
     }
+
+    @Override
+    public boolean equals(Object obj){
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        Wallet other = (Wallet) obj;
+        return THE_COINS.get(new Quarter()) == other.THE_COINS.get(new Quarter())
+                && THE_COINS.get(new Nickel()) == other.THE_COINS.get(new Nickel())
+                    && THE_COINS.get(new Dime()) == other.THE_COINS.get(new Dime())
+                        && THE_COINS.get(new Penny()) == other.THE_COINS.get(new Penny());
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + THE_COINS.get(new Quarter());
+        result = prime * result + THE_COINS.get(new Nickel());
+        result = prime * result + THE_COINS.get(new Dime());
+        result = prime * result + THE_COINS.get(new Penny());
+        return result;
+    }
 }
